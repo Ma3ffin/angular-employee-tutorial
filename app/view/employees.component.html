@@ -1,0 +1,16 @@
+<h2>Employee list</h2>
+<ul class="employees">
+    <!-- *ngFor = For, (click) = Event Binding -->
+    <li *ngFor="let employee of employees"
+        [class.selected]="employee === selectedEmployee"
+        (click)="onSelect(employee)">
+        <span class="badge">{{employee.id}}</span> {{employee.name}}
+    </li>
+</ul>
+
+<div *ngIf="selectedEmployee">
+    <h2>
+        {{selectedEmployee.name | uppercase}} selected!
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>
