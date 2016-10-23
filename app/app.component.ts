@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Employee } from './employee';
 
 const EMPLOYEE: Employee[] = [
     { id: 11, name: 'Max Meyer' },
@@ -13,10 +14,7 @@ const EMPLOYEE: Employee[] = [
     { id: 20, name: 'Reihner Zufall' }
 ];
 
-export class Employee {
-    id: number;
-    name: string;
-}
+
 
 @Component({
     selector: 'my-app',
@@ -27,20 +25,12 @@ export class Employee {
     <!-- *ngFor = For, (click) = Event Binding -->
       <li *ngFor="let employee of employees"
       [class.selected]="employee === selectedEmployee"
-      (click)="onSelect(employee)"
-      >
+      (click)="onSelect(employee)">
       <span class="badge">{{employee.id}}</span> {{employee.name}}
       </li>
     </ul>
-    <!-- *ngIf = if -->
-    <div *ngIf="selectedEmployee">
-        <h2>{{selectedEmployee.name}} details!</h2>
-        <div><label>id: </label>{{selectedEmployee.id}}</div>
-        <div>
-            <label>name: </label>
-            <input [(ngModel)]="selectedEmployee.name" placeholder="name"/>
-        </div>
-    </div>
+
+    <my-employee-detail [employee]="selectedEmployee"></my-employee-detail>
   `,
     styles: [`
   .selected {
