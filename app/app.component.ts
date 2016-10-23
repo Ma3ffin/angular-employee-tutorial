@@ -1,20 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { Employee } from './employee';
-
-const EMPLOYEE: Employee[] = [
-    { id: 11, name: 'Max Meyer' },
-    { id: 12, name: 'Tino Tewes' },
-    { id: 13, name: 'Klaus Kleber' },
-    { id: 14, name: 'Kurt Kurz' },
-    { id: 15, name: 'Karla Klein' },
-    { id: 16, name: 'Tanja Turnus' },
-    { id: 17, name: 'Anna Auer' },
-    { id: 18, name: 'Babsi Bauer' },
-    { id: 19, name: 'Helga Huber' },
-    { id: 20, name: 'Reihner Zufall' }
-];
-
-
+import { EmployeeService } from './employee.service';
 
 @Component({
     selector: 'my-app',
@@ -80,14 +67,24 @@ const EMPLOYEE: Employee[] = [
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
-`]
+`],
+    providers: [EmployeeService]
 
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
     title = 'My Employees';
-    employees = EMPLOYEE;
+    employees: Employee[];
     selectedEmployee: Employee;
+
+    constructor(private employeeService: EmployeeService) { }
+
+    getEmployees(): void {
+        this.employeeService.getEmployees().then(employees => this.employees = employees);
+    }
+    ngOnInit(): void {
+        this.getEmployees();
+    }
 
     onSelect(employee: Employee): void {
         this.selectedEmployee = employee;
