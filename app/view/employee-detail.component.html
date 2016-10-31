@@ -9,10 +9,10 @@
         <input [(ngModel)]="employee.name" placeholder="name"/>
     </div>
     <div>
-        <div *ngIf="!valid" class="alert alert-danger">Age < Min Age! Age set to 16</div>
         <label>age: </label>
         <input type="number" [(ngModel)]="employee.age" min="16" placeholder="age"
                (ngModelChange)="validateAge($event)"/>
+        <div *ngIf="!valid" class="alert">Age to small! Age set to 16</div>
     </div>
     <!-- (click) => Event Binding auf eine Methode -->
     <button (click)="goBack()">Back</button>
