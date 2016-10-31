@@ -17,6 +17,7 @@ export class EmployeeDetailComponent implements OnInit{
     //Properties
     //@input wenn schreibend aus einem Template auf ein Property gebinded wird
     @Input() employee: Employee;
+    valid: boolean = true;
 
     constructor(
         private employeeService: EmployeeService,
@@ -34,5 +35,16 @@ export class EmployeeDetailComponent implements OnInit{
 
     goBack(): void {
         this.location.back();
+    }
+
+
+    validateAge(value): void{
+        if(value < 16){
+            this.employee.age = 16;
+            this.valid = false;
+        }else{
+            this.employee.age = value;
+            this.valid = true;
+        }
     }
 }

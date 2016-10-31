@@ -4,7 +4,7 @@
     <li *ngFor="let employee of employees"
         [class.selected]="employee === selectedEmployee"
         (click)="onSelect(employee)">
-        <span class="badge">{{employee.id}}</span> {{employee.name}}
+        <span class="badge">{{employee.id}}</span> {{employee.name}}, {{employee.age}}
     </li>
 </ul>
 
