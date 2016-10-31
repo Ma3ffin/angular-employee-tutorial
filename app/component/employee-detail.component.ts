@@ -13,6 +13,9 @@ import { EmployeeService } from './../service/employee.service';
 })
 
 export class EmployeeDetailComponent implements OnInit{
+
+    //Properties
+    //@input wenn schreibend aus einem Template auf ein Property gebinded wird
     @Input() employee: Employee;
 
     constructor(

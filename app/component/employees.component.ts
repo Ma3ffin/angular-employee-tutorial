@@ -12,6 +12,8 @@ import { EmployeeService } from './../service/employee.service';
 })
 
 export class EmployeesComponent implements OnInit{
+
+    //Properties
     employees: Employee[];
     selectedEmployee: Employee;
 
@@ -20,6 +22,8 @@ export class EmployeesComponent implements OnInit{
         private employeeService: EmployeeService
     ) { }
 
+    //.then => Wenn Employees erhalten dann..
+    // => Lambda expression
     getEmployees(): void {
         this.employeeService.getEmployees().then(employees => this.employees = employees);
     }
@@ -32,6 +36,7 @@ export class EmployeesComponent implements OnInit{
     }
 
     gotoDetail(): void {
+        //let = lokale variablendeklaration
         let link = ['/detail', this.selectedEmployee.id];
         this.router.navigate(link);
     }

@@ -1,10 +1,13 @@
 <!-- *ngIf = if -->
 <div *ngIf="employee">
+    <!-- {{ }} => One Way-Binding binding auf ein Propertie  -->
     <h2>{{employee.name}} details!</h2>
     <div><label>id: </label>{{employee.id}}</div>
     <div>
         <label>name: </label>
+        <!-- [{ }] => Two-Way Binding auf ein Property -->
         <input [(ngModel)]="employee.name" placeholder="name"/>
     </div>
+    <!-- (click) => Event Binding auf eine Methode -->
     <button (click)="goBack()">Back</button>
 </div>
